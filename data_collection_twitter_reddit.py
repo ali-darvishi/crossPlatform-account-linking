@@ -88,7 +88,7 @@ users.info()
 
 
 fields = ( 'author','author_fullname', 'body', 'link_title','created_utc', 'id','link_id','parent_id','permalink','score','send_replies','subreddit_name_prefixed','link_url')
-for i in range(118,len(users)): #len(users)
+for i in range(len(users)):
     if user_exists(users['Reddit_username'][i]): # Check if Reddit user exists
         if getattr(r.redditor(users['Reddit_username'][i]), 'is_suspended', False): # Check if Reddit user is suspended
             with open('Deleted_users.txt', 'a') as f:
