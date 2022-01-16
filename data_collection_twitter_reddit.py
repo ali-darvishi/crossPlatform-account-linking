@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 # For sending GET requests from the API
 import requests
 # For saving access tokens and for file management when creating and adding to the dataset
@@ -31,10 +25,6 @@ from twarc.expansions import ensure_flattened
 
 import praw
 
-
-# In[ ]:
-
-
 # Input credentials:
 
 # Client_id = input("Please enter your Reddit Client id:")
@@ -52,10 +42,7 @@ Username = credential[2]
 Password = credential[3]
 Token = credential[4]
 
-
-# In[ ]:
-
-
+# Reddit and Twitter APIs 
 r = praw.Reddit(client_id= Client_id,
                 client_secret=Client_secret,
                 username= Username,
@@ -64,9 +51,9 @@ r = praw.Reddit(client_id= Client_id,
 
 t = Twarc2(bearer_token = Token)
 
+# Functions to Check if user exists in:
 
-# In[ ]:
-
+## Reddit
 
 from prawcore.exceptions import NotFound
 def user_exists(name):
@@ -78,9 +65,7 @@ def user_exists(name):
         pass #pass other exceptions 
     return True
 
-
-# In[ ]:
-
+## Twitter
 
 def Twitter_user_exists(name):
     try:
@@ -92,14 +77,14 @@ def Twitter_user_exists(name):
     return True
 
 
-# In[ ]:
+# Read crosslinked usernames
 
 
 users = pd.read_csv ('users.csv')
 users.info()
 
 
-# In[ ]:
+# Collect data
 
 
 fields = ( 'author','author_fullname', 'body', 'link_title','created_utc', 'id','link_id','parent_id','permalink','score','send_replies','subreddit_name_prefixed','link_url')
